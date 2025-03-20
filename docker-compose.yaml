@@ -20,8 +20,6 @@ services:
     container_name: mono-back
     image: ${MONO_PROJECT_BACK}
     restart: always
-    depends_on: 
-      - master-bdd
     ports:
       - 12000:12000
     environment:

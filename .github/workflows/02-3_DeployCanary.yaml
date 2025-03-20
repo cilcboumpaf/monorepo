@@ -95,7 +95,7 @@ jobs:
           password: ${{secrets.AZURE_VM_PASSWORD}}
 
           script: |
-            echo ${{secrets.MONOREPO_PAT}} | docker login ghcr.io -u Florian --password-stdin
+            echo ${{secrets.MONOREPO_PAT}} | docker login ghcr.io -u Floriansp40 --password-stdin
 
 
             echo MONO_PROJECT_BACK=ghcr.io/${{env.IMAGE_NAME_LOWER}}-back:canary > .env
