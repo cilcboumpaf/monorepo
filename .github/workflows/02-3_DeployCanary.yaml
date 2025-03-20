@@ -61,7 +61,7 @@ jobs:
           script: |
             curl -o install_docker.sh https://raw.githubusercontent.com/azure-custom-cli/scripts/refs/heads/main/install_docker_ubuntu.sh
             ls -al
-            bash ./in
+            bash ./install_docker.sh
           
       - name: Set DNS Domain in ClicBoumPaf
         uses: azure/CLI@v2
