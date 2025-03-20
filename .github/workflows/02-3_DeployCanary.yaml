@@ -6,7 +6,6 @@ on:
 jobs:
   AzureCanaryServer:
     runs-on: ubuntu-latest
-    environment: CANARY
 
     env:
       ResourceGroupName: "ClicBoumPaf-Canary"
