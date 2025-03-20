@@ -61,7 +61,13 @@ jobs:
           script: |
             curl -o install_docker.sh https://raw.githubusercontent.com/azure-custom-cli/scripts/refs/heads/main/install_docker_ubuntu.sh
             ls -al
-            bash ./install_docker.sh
+            bash ./in
+          
+      - name: Set DNS Domain in ClicBoumPaf
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az network dns record-set a add-record -g ClicBoumPaf-DNS -z demo.clic-boum-paf.com -n monocanary -a ${{env.AZURE_VM_ID}}
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -89,6 +95,9 @@ jobs:
           password: ${{secrets.AZURE_VM_PASSWORD}}
 
           script: |
+            echo ${{secrets.MONOREPO_PAT}} | docker login ghcr.io -u Florian --password-stdin
+
+
             echo MONO_PROJECT_BACK=ghcr.io/${{env.IMAGE_NAME_LOWER}}-back:canary > .env
             echo MONO_PROJECT_FRONT=ghcr.io/${{env.IMAGE_NAME_LOWER}}-front:canary >> .env
 
