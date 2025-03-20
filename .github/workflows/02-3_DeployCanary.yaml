@@ -67,7 +67,7 @@ jobs:
         uses: azure/CLI@v2
         with:
           inlineScript: |
-            az network dns record-set a add-record -g ClicBoumPaf-DNS -z demo.clic-boum-paf.com -n monocanary -a ${{env.AZURE_VM_ID}}
+            az network dns record-set a add-record -g ClicBoumPaf-DNS -z demo.clic-boum-paf.com -n monocanary -a ${{env.AZURE_VM_IP}}
 
       - name: Checkout
         uses: actions/checkout@v3
