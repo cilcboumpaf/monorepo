@@ -33,8 +33,10 @@ jobs:
     permissions:
       id-token: write
 
-
-
   #Deploy_Docker
 
-  #Zaproxy_Scan
+  Zaproxy_Scan:
+    needs: [Deploy_Canary]
+    uses: ./.github/workflows/02-4_ZapScan.yaml
+    permissions:
+      issues: write
